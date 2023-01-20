@@ -75,15 +75,15 @@ void countVerses()
   bool readingVerseLocation = false;
   while (file.available())
   {
-    char c = file.read();
-    if (c == '\n' && !readingVerseLocation)
+    file.find('\n');
+    if (readingVerseLocation)
     {
       numberOfVerses++;
-      readingVerseLocation = true;
-    }
-    else if (c == '\n' && readingVerseLocation)
-    {
       readingVerseLocation = false;
+    }
+    else
+    {
+      readingVerseLocation = true;
     }
   }
 
